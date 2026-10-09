@@ -1,0 +1,80 @@
+{
+  "brands": [
+    {
+      "name": "Toyota",
+      "models": [
+        { "name": "Camry", "years": "2018-2024", "hasPattern": true },
+        { "name": "RAV4", "years": "2019-2024", "hasPattern": true },
+        { "name": "Land Cruiser 300", "years": "2021-2024", "hasPattern": true },
+        { "name": "Highlander", "years": "2020-2024", "hasPattern": true }
+      ]
+    },
+    {
+      "name": "Lexus",
+      "models": [
+        { "name": "RX 350", "years": "2019-2024", "hasPattern": true },
+        { "name": "LX 600", "years": "2022-2024", "hasPattern": true },
+        { "name": "NX", "years": "2021-2024", "hasPattern": true }
+      ]
+    },
+    {
+      "name": "Nissan",
+      "models": [
+        { "name": "Patrol", "years": "2018-2024", "hasPattern": true },
+        { "name": "X-Trail", "years": "2019-2024", "hasPattern": true }
+      ]
+    },
+    {
+      "name": "BMW",
+      "models": [
+        { "name": "X5", "years": "2019-2024", "hasPattern": true },
+        { "name": "X7", "years": "2020-2024", "hasPattern": true },
+        { "name": "5 Series", "years": "2020-2024", "hasPattern": true }
+      ]
+    },
+    {
+      "name": "Mercedes-Benz",
+      "models": [
+        { "name": "GLE", "years": "2020-2024", "hasPattern": true },
+        { "name": "GLS", "years": "2020-2024", "hasPattern": true },
+        { "name": "S-Class", "years": "2021-2024", "hasPattern": true }
+      ]
+    },
+    {
+      "name": "Kia",
+      "models": [
+        { "name": "K5", "years": "2020-2024", "hasPattern": true },
+        { "name": "Sportage", "years": "2022-2024", "hasPattern": true }
+      ]
+    },
+    {
+      "name": "Hyundai",
+      "models": [
+        { "name": "Tucson", "years": "2021-2024", "hasPattern": true },
+        { "name": "Santa Fe", "years": "2019-2024", "hasPattern": true }
+      ]
+    },
+    {
+      "name": "Mazda",
+      "models": [
+        { "name": "CX-5", "years": "2018-2024", "hasPattern": true },
+        { "name": "CX-9", "years": "2019-2024", "hasPattern": true }
+      ]
+    },
+    {
+      "name": "Volkswagen",
+      "models": [
+        { "name": "Tiguan", "years": "2019-2024", "hasPattern": true },
+        { "name": "Touareg", "years": "2019-2024", "hasPattern": true }
+      ]
+    },
+    {
+      "name": "Audi",
+      "models": [
+        { "name": "Q7", "years": "2019-2024", "hasPattern": true },
+        { "name": "Q8", "years": "2020-2024", "hasPattern": true },
+        { "name": "A6", "years": "2019-2024", "hasPattern": true }
+      ]
+    }
+  ]
+}

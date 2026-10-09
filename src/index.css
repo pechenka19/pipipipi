@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #0A0A0B;
+  --color-abyss: #111113;
+  --color-fog: #EDEDED;
+  --color-brass: #C9A86A;
+  --color-steel: #8A8D91;
+
+  --font-display: 'Unbounded', sans-serif;
+  --font-quote: 'Cormorant Garamond', serif;
+  --font-body: 'Manrope', sans-serif;
+
+  --text-chapter: clamp(3.5rem, 10vw, 10rem);
+  --text-display: clamp(2.5rem, 6vw, 6rem);
+  --text-h1: clamp(2rem, 4vw, 4rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.5rem);
+  --text-body: clamp(1rem, 1.5vw, 1.25rem);
+  --text-caption: clamp(0.75rem, 1vw, 0.875rem);
+
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-section: min(20vh, 24rem);
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-fog);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--text-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brass);
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-brass);
+  color: var(--color-void);
+}
+
+/* Typography utilities */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-quote {
+  font-family: var(--font-quote);
+}
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Craft panels */
+.craft-panel {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.craft-panel:first-child {
+  opacity: 1;
+}
+
+/* Letter reveal */
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* SVG blueprint */
+.blueprint-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+/* Parallax layers */
+.parallax-layer {
+  will-change: transform;
+}
+
+/* Gradient overlays */
+.gradient-void {
+  background: linear-gradient(180deg, var(--color-void) 0%, transparent 100%);
+}
+.gradient-void-reverse {
+  background: linear-gradient(0deg, var(--color-void) 0%, transparent 100%);
+}
+
+/* Brass glow */
+.brass-glow {
+  text-shadow: 0 0 40px rgba(201, 168, 106, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-brass {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-pulse-brass {
+  animation: pulse-brass 2s ease-in-out infinite;
+}
+
+/* Horizontal scroll */
+.horizontal-scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-lg);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(17, 17, 19, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 168, 106, 0.1);
+}
+
+/* Section spacing */
+.section-spacing {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+}
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+}

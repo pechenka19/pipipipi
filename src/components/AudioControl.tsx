@@ -25,47 +25,6 @@ export default function AudioControl() {
   });
 
   useEffect(() => {
-    const initAudio = () => {
-      if (isInitialized) return;
-
-      soundsRef.current.magneticClick = new Howl({
-        src: ['/audio/magnetic-click.mp3'],
-        volume: 0.6,
-        preload: false,
-      });
-
-      soundsRef.current.workshopAmbient = new Howl({
-        src: ['/audio/workshop-ambient.mp3'],
-        volume: 0.3,
-        loop: true,
-        preload: false,
-      });
-
-      soundsRef.current.orchestralTheme = new Howl({
-        src: ['/audio/orchestral-theme.mp3'],
-        volume: 0.4,
-        loop: true,
-        preload: false,
-      });
-
-      window.audioSounds = soundsRef.current;
-      setIsInitialized(true);
-    };
-
-    const handleClick = () => {
-      initAudio();
-      if (isMuted) {
-        setIsMuted(false);
-      } else {
-        setIsMuted(true);
-      }
-    };
-
-    document.addEventListener('click', handleClick, { once: false });
-    return () => document.removeEventListener('click', handleClick);
-  }, [isMuted, isInitialized]);
-
-  useEffect(() => {
     if (!isInitialized) return;
 
     const sounds = soundsRef.current;
@@ -81,7 +40,6 @@ export default function AudioControl() {
       onClick={(e) => {
         e.stopPropagation();
         if (!isInitialized) {
-          // Initialize on first click
           soundsRef.current.magneticClick = new Howl({
             src: ['/audio/magnetic-click.mp3'],
             volume: 0.6,
@@ -101,8 +59,10 @@ export default function AudioControl() {
           });
           window.audioSounds = soundsRef.current;
           setIsInitialized(true);
+          setIsMuted(false);
+        } else {
+          setIsMuted(!isMuted);
         }
-        setIsMuted(!isMuted);
       }}
       className="fixed top-6 right-6 z-50 w-10 h-10 rounded-full glass flex items-center justify-center hover:border-[var(--color-brass)] transition-all duration-300 group"
       aria-label={isMuted ? 'Включить звук' : 'Выключить звук'}

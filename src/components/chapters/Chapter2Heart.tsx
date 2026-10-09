@@ -35,21 +35,22 @@ export default function Chapter2Heart() {
       }
 
       // Count-up animations
-      const statElements = statsRef.current?.querySelectorAll('.stat-number');
-      const targets = [4, 35, 200];
-
-      statElements?.forEach((el, i) => {
+      const numbers = document.querySelectorAll('.stat-number');
+      numbers.forEach((num) => {
+        const target = parseInt(num.getAttribute('data-target') || '0');
         const counter = { value: 0 };
+        
         gsap.to(counter, {
-          value: targets[i],
+          value: target,
+          duration: 2,
+          ease: 'power2.out',
           scrollTrigger: {
-            trigger: el,
+            trigger: num,
             start: 'top 80%',
-            end: '+=40%',
-            scrub: 1,
+            toggleActions: 'play none none reverse',
           },
           onUpdate: () => {
-            el.textContent = Math.floor(counter.value).toString();
+            num.textContent = Math.floor(counter.value).toString();
           },
         });
       });
@@ -78,7 +79,7 @@ export default function Chapter2Heart() {
     <section
       id="chapter-2"
       ref={sectionRef}
-      className="relative min-h-screen section-spacing overflow-hidden"
+      className="relative overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-[var(--color-abyss)]" />
@@ -178,7 +179,7 @@ export default function Chapter2Heart() {
           <div ref={statsRef} className="grid grid-cols-3 gap-6">
             <div className="text-center">
               <div className="font-display text-3xl md:text-4xl text-[var(--color-brass)]">
-                <span className="stat-number">0</span>
+                <span className="stat-number" data-target="4">0</span>
                 <span className="text-lg ml-1">мм</span>
               </div>
               <div className="font-body text-xs text-[var(--color-steel)] mt-2 uppercase tracking-wider">
@@ -187,7 +188,7 @@ export default function Chapter2Heart() {
             </div>
             <div className="text-center">
               <div className="font-display text-3xl md:text-4xl text-[var(--color-brass)]">
-                <span className="stat-number">0</span>
+                <span className="stat-number" data-target="35">0</span>
                 <span className="text-lg ml-1">МЭ</span>
               </div>
               <div className="font-body text-xs text-[var(--color-steel)] mt-2 uppercase tracking-wider">
@@ -196,7 +197,7 @@ export default function Chapter2Heart() {
             </div>
             <div className="text-center">
               <div className="font-display text-3xl md:text-4xl text-[var(--color-brass)]">
-                <span className="stat-number">0</span>
+                <span className="stat-number" data-target="200">0</span>
               </div>
               <div className="font-body text-xs text-[var(--color-steel)] mt-2 uppercase tracking-wider">
                 Прототипов

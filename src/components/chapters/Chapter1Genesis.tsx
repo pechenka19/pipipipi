@@ -100,8 +100,7 @@ export default function Chapter1Genesis() {
       <div
         className="ch1-bg absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://image.qwenlm.ai/generated-images/2ada3cf8-0642-415d-8797-208bf41d55b0/_result.png')`,
-        }}
+            backgroundImage: `url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80&auto=format&fit=crop')`,        }}
       />
       {/* Dark overlay */}
       <div className="ch1-bg absolute inset-0 bg-gradient-to-b from-[var(--color-void)]/70 via-[var(--color-void)]/50 to-[var(--color-void)]" />

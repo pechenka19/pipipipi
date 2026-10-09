@@ -18,35 +18,33 @@ import Chapter6Legacy from './components/chapters/Chapter6Legacy';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function App() {
-  const appRef = useRef<HTMLDivElement>(null);
-
+function useLenis() {
   useEffect(() => {
-    // Initialize Lenis smooth scrolling
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
       touchMultiplier: 2,
     });
 
-    // CRITICAL: Use ONLY gsap.ticker, NOT requestAnimationFrame
     lenis.on('scroll', ScrollTrigger.update);
+
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
+
     gsap.ticker.lagSmoothing(0);
 
-    // Cleanup
     return () => {
       gsap.ticker.remove(lenis.raf);
       lenis.destroy();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
+}
+
+function App() {
+  const appRef = useRef<HTMLDivElement>(null);
+
+  useLenis();
 
   return (
     <div ref={appRef} className="relative">

@@ -29,7 +29,7 @@ export default function Chapter6Legacy() {
       if (!isMobile && galleryRef.current) {
         // Desktop: horizontal scroll
         const gallery = galleryRef.current;
-        const scrollWidth = gallery.scrollWidth - window.innerWidth;
+        const scrollWidth = gallery.scrollWidth;
 
         gsap.to(gallery, {
           x: -scrollWidth,

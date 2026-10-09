@@ -4,14 +4,15 @@ export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const accepted = localStorage.getItem('cookies-accepted');
+    const accepted = localStorage.getItem('veles-cookies-accepted');
     if (!accepted) {
-      setIsVisible(true);
+      const timer = setTimeout(() => setIsVisible(true), 2000);
+      return () => clearTimeout(timer);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('cookies-accepted', 'true');
+    localStorage.setItem('veles-cookies-accepted', 'true');
     setIsVisible(false);
   };
 
@@ -19,9 +20,9 @@ export default function CookieBanner() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 glass p-6">
-      <div className="container-fluid flex items-center justify-between gap-6">
-        <p className="text-body text-fog/80">
-          Мы используем файлы cookie для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с политикой конфиденциальности.
+      <div className="container-fluid flex flex-col md:flex-row items-center justify-between gap-4">
+        <p className="text-body text-fog/80 text-sm">
+          Мы используем файлы cookie для улучшения работы сайта и анализа трафика. Продолжая пользоваться сайтом, вы соглашаетесь с политикой конфиденциальности.
         </p>
         <button
           onClick={handleAccept}
